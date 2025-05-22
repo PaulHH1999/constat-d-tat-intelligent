@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+  <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
@@ -7,60 +8,103 @@
   <!-- Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    input {
+    input, textarea {
       color: #000 !important;
       opacity: 1 !important;
     }
-    input::placeholder {
+    input::placeholder, textarea::placeholder {
       color: #000 !important;
       opacity: 1 !important;
+    }
+    #photoPreview img {
+      max-width: 100%;
+      height: auto;
+      margin-top: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 0.25rem;
     }
   </style>
 </head>
-<body class="min-h-screen bg-gray-100 dark:bg-gray-900 p-6">
+<body class="min-h-screen bg-gray-100 p-6">
   <div class="max-w-3xl mx-auto">
     <h1 class="text-3xl font-bold mb-6 text-center text-black">Constat d'État Intelligent</h1>
-    <form id="constatForm" class="bg-white shadow-md rounded-lg p-6 space-y-4">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div>
-          <label for="titre" class="block font-medium text-black">Titre de l'œuvre</label>
+    <form id="constatForm" class="bg-white shadow-md rounded-lg p-6 space-y-6">
+      <!-- Informations générales -->
+      <div class="space-y-4">
+        <label class="block font-medium text-black">Titre de l'œuvre
           <input type="text" id="titre" class="w-full mt-1 p-2 border rounded bg-white focus:outline-none focus:ring-2 focus:ring-blue-500" required />
-        </div>
-        <div>
-          <label for="artiste" class="block font-medium text-black">Artiste</label>
+        </label>
+        <label class="block font-medium text-black">Artiste
           <input type="text" id="artiste" class="w-full mt-1 p-2 border rounded bg-white focus:outline-none focus:ring-2 focus:ring-blue-500" required />
-        </div>
+        </label>
       </div>
+
+      <!-- Dimensions -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div>
-          <label for="annee" class="block font-medium text-black">Année de création</label>
+        <label class="block font-medium text-black">Année de création
           <input type="number" id="annee" class="w-full mt-1 p-2 border rounded bg-white focus:outline-none focus:ring-2 focus:ring-blue-500" required />
-        </div>
-        <div>
-          <label for="hauteur" class="block font-medium text-black">Hauteur (cm)</label>
+        </label>
+        <label class="block font-medium text-black">Hauteur (cm)
           <input type="number" id="hauteur" class="w-full mt-1 p-2 border rounded bg-white focus:outline-none focus:ring-2 focus:ring-blue-500" required />
-        </div>
-        <div>
-          <label for="largeur" class="block font-medium text-black">Largeur (cm)</label>
+        </label>
+        <label class="block font-medium text-black">Largeur (cm)
           <input type="number" id="largeur" class="w-full mt-1 p-2 border rounded bg-white focus:outline-none focus:ring-2 focus:ring-blue-500" required />
-        </div>
+        </label>
       </div>
+
+      <!-- Profondeur et photos -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div>
-          <label for="profondeur" class="block font-medium text-black">Profondeur (cm)</label>
+        <label class="block font-medium text-black">Profondeur (cm)
           <input type="number" id="profondeur" class="w-full mt-1 p-2 border rounded bg-white focus:outline-none focus:ring-2 focus:ring-blue-500" required />
-        </div>
-        <div class="md:col-span-2">
-          <label for="photos" class="block font-medium text-black">Photos</label>
-          <input type="file" id="photos" multiple accept="image/*" class="w-full mt-1 focus:outline-none" />
+        </label>
+        <div class="md:col-span-2 space-y-2">
+          <label class="block font-medium text-black">Ajouter une photo</label>
+          <input type="file" id="photoInput" accept="image/*" class="w-full focus:outline-none" />
+          <div id="photoPreview"></div>
         </div>
       </div>
-      <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition focus:ring-2 focus:ring-blue-500">Enregistrer le constat</button>
+
+      <!-- Dégradations -->
+      <fieldset class="space-y-2">
+        <legend class="text-lg font-semibold text-black">Dégradations observées</legend>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <label><input type="checkbox" name="degradations" value="craquelures" /> Craquelures</label>
+          <label><input type="checkbox" name="degradations" value="fissures" /> Fissures</label>
+          <label><input type="checkbox" name="degradations" value="ecaillement" /> Écaillage</label>
+          <label><input type="checkbox" name="degradations" value="decollement" /> Décollement de la couche picturale</label>
+          <label><input type="checkbox" name="degradations" value="decoloration" /> Décoloration</label>
+          <label><input type="checkbox" name="degradations" value="taches" /> Taches</label>
+          <label><input type="checkbox" name="degradations" value="moisissures" /> Moisissures</label>
+          <label><input type="checkbox" name="degradations" value="salissures" /> Salissures</label>
+        </div>
+        <label class="block font-medium text-black">Commentaires complémentaires
+          <textarea id="commentaires" rows="4" class="w-full mt-1 p-2 border rounded bg-white focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Détails, localisation, intensité..."></textarea>
+        </label>
+      </fieldset>
+
+      <!-- Bouton de sauvegarde -->
+      <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition focus:ring-2 focus:ring-blue-500">
+        Enregistrer le constat
+      </button>
     </form>
+
     <div id="message" class="mt-4 text-center text-black"></div>
   </div>
 
   <script>
+    // Prévisualisation de la photo
+    document.getElementById('photoInput').addEventListener('change', function(e) {
+      const preview = document.getElementById('photoPreview');
+      preview.innerHTML = '';
+      const file = e.target.files[0];
+      if (file) {
+        const img = document.createElement('img');
+        img.src = URL.createObjectURL(file);
+        preview.appendChild(img);
+      }
+    });
+
+    // Gestion du formulaire
     const form = document.getElementById('constatForm');
     const messageEl = document.getElementById('message');
     form.addEventListener('submit', function(e) {
@@ -74,6 +118,7 @@
       messageEl.className = 'text-green-600';
       setTimeout(() => {
         form.reset();
+        document.getElementById('photoPreview').innerHTML = '';
         messageEl.textContent = '';
       }, 2000);
     });
