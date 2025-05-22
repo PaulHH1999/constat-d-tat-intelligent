@@ -11,6 +11,8 @@
     .step.active { display: block; }
     .buttons { margin-top: 1rem; display: flex; justify-content: space-between; }
     input, select, textarea { color: #000; opacity: 1; }
+    fieldset { margin-top: 1rem; border: 1px solid #ccc; padding: 1rem; border-radius: 0.5rem; }
+    legend { font-weight: bold; }
   </style>
 </head>
 <body>
@@ -20,40 +22,96 @@
       <!-- Étape 1 : Infos générales -->
       <div class="step active" data-step="1">
         <h2 class="font-semibold mb-2">1. Informations générales</h2>
-        <label class="block mb-1">Titre de l'œuvre<input type="text" name="titre" class="w-full border p-2 rounded" required></label>
-        <label class="block mb-1">Artiste<input type="text" name="artiste" class="w-full border p-2 rounded"></label>
-        <label class="block mb-1">Année de création<input type="number" name="annee" class="w-full border p-2 rounded"></label>
+        <label class="block mb-1">Titre de l'œuvre
+          <input type="text" name="titre" class="w-full border p-2 rounded" required>
+        </label>
+        <label class="block mb-1">Artiste
+          <input type="text" name="artiste" class="w-full border p-2 rounded">
+        </label>
+        <label class="block mb-1">Année de création
+          <input type="number" name="annee" class="w-full border p-2 rounded">
+        </label>
       </div>
-      <!-- Étape 2 : Description et dimensions -->
+
+      <!-- Étape 2 : Description & Dimensions -->
       <div class="step" data-step="2">
         <h2 class="font-semibold mb-2">2. Description & Dimensions</h2>
-        <label class="block mb-1">Type d'œuvre<select name="type" class="w-full border p-2 rounded">
-          <option>Installation</option><option>Sculpture</option><option>Peinture</option><option>Autre</option>
-        </select></label>
-        <label class="block mb-1">Matériaux & technologies<textarea name="tech" rows="3" class="w-full border p-2 rounded" placeholder="Ex : bois, capteurs, microcontrôleur..."></textarea></label>
+        <label class="block mb-1">Type d'œuvre
+          <select name="type" class="w-full border p-2 rounded">
+            <option>Installation</option><option>Sculpture</option><option>Peinture</option><option>Fresque</option><option>Autre</option>
+          </select>
+        </label>
+        <label class="block mb-1">Matériaux & technologies
+          <textarea name="tech" rows="3" class="w-full border p-2 rounded" placeholder="Ex : toile, pigments, vernis..."></textarea>
+        </label>
         <div class="grid grid-cols-3 gap-2">
           <label>H (cm)<input type="number" name="hauteur" class="w-full border p-2 rounded"></label>
           <label>L (cm)<input type="number" name="largeur" class="w-full border p-2 rounded"></label>
           <label>P (cm)<input type="number" name="profondeur" class="w-full border p-2 rounded"></label>
         </div>
+        <fieldset>
+          <legend>Cadre</legend>
+          <label><input type="radio" name="cadre" value="oui"> Avec cadre</label>
+          <label class="ml-4"><input type="radio" name="cadre" value="non"> Sans cadre</label>
+        </fieldset>
       </div>
-      <!-- Étape 3 : État et dégradations -->
+
+      <!-- Étape 3 : État & Dégradations -->
       <div class="step" data-step="3">
         <h2 class="font-semibold mb-2">3. État & Dégradations</h2>
-        <label><input type="checkbox" name="degradations" value="craquelures"> Craquelures</label>
-        <label><input type="checkbox" name="degradations" value="fissures"> Fissures</label>
-        <label><input type="checkbox" name="degradations" value="ecaillement"> Écaillage</label>
-        <label><input type="checkbox" name="degradations" value="decoloration"> Décoloration</label>
-        <label><input type="checkbox" name="degradations" value="taches"> Taches</label>
-        <label class="block mt-2">Commentaires<textarea name="commentaires" rows="4" class="w-full border p-2 rounded"></textarea></label>
+        <!-- Support (toile) -->
+        <fieldset>
+          <legend>1. Support (toile)</legend>
+          <label><input type="checkbox" name="deg_support" value="craquelures_support"> Craquelures</label>
+          <label><input type="checkbox" name="deg_support" value="trous"> Trous / Perforations</label>
+          <label><input type="checkbox" name="deg_support" value="dechirures"> Déchirures</label>
+          <label><input type="checkbox" name="deg_support" value="deformation_support"> Déformations / Ondulations</label>
+          <label><input type="checkbox" name="deg_support" value="moisissures_support"> Moisissures</label>
+          <label><input type="checkbox" name="deg_support" value="attache_detache"> Attaches lâches / Détachées</label>
+        </fieldset>
+        <!-- Couche picturale -->
+        <fieldset>
+          <legend>2. Couche picturale</legend>
+          <label><input type="checkbox" name="deg_couche" value="ecaillement"> Écaillage</label>
+          <label><input type="checkbox" name="deg_couche" value="fissures"> Fissures</label>
+          <label><input type="checkbox" name="deg_couche" value="decollement"> Décollement</label>
+          <label><input type="checkbox" name="deg_couche" value="perte_matiere"> Perte de matière</label>
+          <label><input type="checkbox" name="deg_couche" value="taches"> Taches (huile, salissures)</label>
+          <label><input type="checkbox" name="deg_couche" value="abrasion"> Abrasion / Usure de surface</label>
+        </fieldset>
+        <!-- Vernis -->
+        <fieldset>
+          <legend>3. Vernis</legend>
+          <label><input type="checkbox" name="deg_vernis" value="jaunissement"> Jaunissement</label>
+          <label><input type="checkbox" name="deg_vernis" value="craquelures_vernis"> Craquelures de vernis</label>
+          <label><input type="checkbox" name="deg_vernis" value="opacification"> Opacification / Voilage</label>
+          <label><input type="checkbox" name="deg_vernis" value="perte_brillance"> Perte de brillance</label>
+          <label><input type="checkbox" name="deg_vernis" value="decollement_vernis"> Décollement de vernis</label>
+          <label><input type="checkbox" name="deg_vernis" value="taches_vernis"> Taches / Gouttes de vernis</label>
+        </fieldset>
+        <!-- Avifaune et insectes -->
+        <fieldset>
+          <legend>4. Insectes & Avifaune</legend>
+          <label><input type="checkbox" name="deg_insectes" value="traces_chenille"> Traces de chenilles</label>
+          <label><input type="checkbox" name="deg_insectes" value="perforations_insectes"> Perforations</label>
+          <label><input type="checkbox" name="deg_insectes" value="déjections"> Déjections d'insectes / oiseaux</label>
+        </fieldset>
+        <!-- Commentaires -->
+        <label class="block mt-2">Commentaires complémentaires
+          <textarea name="commentaires" rows="4" class="w-full border p-2 rounded" placeholder="Détails, localisation..."></textarea>
+        </label>
       </div>
-      <!-- Étape 4 : Photo & finalisation -->
+
+      <!-- Étape 4 : Photo & Envoi -->
       <div class="step" data-step="4">
         <h2 class="font-semibold mb-2">4. Photo & Envoi</h2>
-        <label class="block mb-2">Ajouter une photo<input type="file" name="photo" accept="image/*" id="photoInput" class="w-full"></label>
+        <label class="block mb-2">Ajouter une photo
+          <input type="file" name="photo" accept="image/*" id="photoInput" class="w-full">
+        </label>
         <div id="photoPreview" class="mb-2"></div>
         <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded">Terminer & Envoyer</button>
       </div>
+
       <div class="buttons">
         <button type="button" id="prevBtn" class="bg-gray-300 px-4 py-2 rounded" disabled>Précédent</button>
         <button type="button" id="nextBtn" class="bg-blue-600 text-white px-4 py-2 rounded">Suivant</button>
@@ -85,7 +143,6 @@
     });
     document.getElementById('wizardForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      // Ici on pourrait envoyer les données via fetch
       document.getElementById('message').textContent = 'Constat envoyé !';
     });
   </script>
