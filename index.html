@@ -19,7 +19,7 @@
   <div class="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow">
     <h1 class="text-2xl font-bold text-center mb-4">Constat d'État Intelligent</h1>
     <form id="wizardForm">
-      <!-- Étape 1 : Infos générales -->
+      <!-- Étape 1 : Informations générales -->
       <div class="step active" data-step="1">
         <h2 class="font-semibold mb-2">1. Informations générales</h2>
         <label class="block mb-1">Titre de l'œuvre
@@ -33,7 +33,7 @@
         </label>
       </div>
 
-      <!-- Étape 2 : Description & Dimensions -->
+      <!-- Étape 2 : Description & Dimensions -->
       <div class="step" data-step="2">
         <h2 class="font-semibold mb-2">2. Description & Dimensions</h2>
         <label class="block mb-1">Type d'œuvre
@@ -56,12 +56,11 @@
         </fieldset>
       </div>
 
-      <!-- Étape 3 : État & Dégradations -->
+      <!-- Étape 3 : Support (toile) -->
       <div class="step" data-step="3">
-        <h2 class="font-semibold mb-2">3. État & Dégradations</h2>
-        <!-- Support (toile) -->
+        <h2 class="font-semibold mb-2">3. Support (toile)</h2>
         <fieldset>
-          <legend>1. Support (toile)</legend>
+          <legend>Dégradations du support</legend>
           <label><input type="checkbox" name="deg_support" value="craquelures_support"> Craquelures</label>
           <label><input type="checkbox" name="deg_support" value="trous"> Trous / Perforations</label>
           <label><input type="checkbox" name="deg_support" value="dechirures"> Déchirures</label>
@@ -69,9 +68,13 @@
           <label><input type="checkbox" name="deg_support" value="moisissures_support"> Moisissures</label>
           <label><input type="checkbox" name="deg_support" value="attache_detache"> Attaches lâches / Détachées</label>
         </fieldset>
-        <!-- Couche picturale -->
+      </div>
+
+      <!-- Étape 4 : Couche picturale -->
+      <div class="step" data-step="4">
+        <h2 class="font-semibold mb-2">4. Couche picturale</h2>
         <fieldset>
-          <legend>2. Couche picturale</legend>
+          <legend>Dégradations de la couche picturale</legend>
           <label><input type="checkbox" name="deg_couche" value="ecaillement"> Écaillage</label>
           <label><input type="checkbox" name="deg_couche" value="fissures"> Fissures</label>
           <label><input type="checkbox" name="deg_couche" value="decollement"> Décollement</label>
@@ -79,9 +82,13 @@
           <label><input type="checkbox" name="deg_couche" value="taches"> Taches (huile, salissures)</label>
           <label><input type="checkbox" name="deg_couche" value="abrasion"> Abrasion / Usure de surface</label>
         </fieldset>
-        <!-- Vernis -->
+      </div>
+
+      <!-- Étape 5 : Vernis -->
+      <div class="step" data-step="5">
+        <h2 class="font-semibold mb-2">5. Vernis</h2>
         <fieldset>
-          <legend>3. Vernis</legend>
+          <legend>Dégradations liées au vernis</legend>
           <label><input type="checkbox" name="deg_vernis" value="jaunissement"> Jaunissement</label>
           <label><input type="checkbox" name="deg_vernis" value="craquelures_vernis"> Craquelures de vernis</label>
           <label><input type="checkbox" name="deg_vernis" value="opacification"> Opacification / Voilage</label>
@@ -89,22 +96,22 @@
           <label><input type="checkbox" name="deg_vernis" value="decollement_vernis"> Décollement de vernis</label>
           <label><input type="checkbox" name="deg_vernis" value="taches_vernis"> Taches / Gouttes de vernis</label>
         </fieldset>
-        <!-- Avifaune et insectes -->
-        <fieldset>
-          <legend>4. Insectes & Avifaune</legend>
-          <label><input type="checkbox" name="deg_insectes" value="traces_chenille"> Traces de chenilles</label>
-          <label><input type="checkbox" name="deg_insectes" value="perforations_insectes"> Perforations</label>
-          <label><input type="checkbox" name="deg_insectes" value="déjections"> Déjections d'insectes / oiseaux</label>
-        </fieldset>
-        <!-- Commentaires -->
-        <label class="block mt-2">Commentaires complémentaires
-          <textarea name="commentaires" rows="4" class="w-full border p-2 rounded" placeholder="Détails, localisation..."></textarea>
-        </label>
       </div>
 
-      <!-- Étape 4 : Photo & Envoi -->
-      <div class="step" data-step="4">
-        <h2 class="font-semibold mb-2">4. Photo & Envoi</h2>
+      <!-- Étape 6 : Insectes & Avifaune -->
+      <div class="step" data-step="6">
+        <h2 class="font-semibold mb-2">6. Insectes & Avifaune</h2>
+        <fieldset>
+          <legend>Dégradations par insectes et élevage</legend>
+          <label><input type="checkbox" name="deg_insectes" value="traces_chenille"> Traces de chenilles</label>
+          <label><input type="checkbox" name="deg_insectes" value="perforations_insectes"> Perforations</label>
+          <label><input type="checkbox" name="deg_insectes" value="dejections"> Déjections d'insectes / oiseaux</label>
+        </fieldset>
+      </div>
+
+      <!-- Étape 7 : Photo & Envoi -->
+      <div class="step" data-step="7">
+        <h2 class="font-semibold mb-2">7. Photo & Envoi</h2>
         <label class="block mb-2">Ajouter une photo
           <input type="file" name="photo" accept="image/*" id="photoInput" class="w-full">
         </label>
